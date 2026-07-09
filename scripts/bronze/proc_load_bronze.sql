@@ -123,8 +123,14 @@ DECLARE @start_time DATETIME, @end_time DATETIME; --track the ETL duration in or
 		);
 		SET @end_time = GETDATE();
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + 'seconds'
+        PRINT '>> -------------'
 
-		PRINT '>> Load Duration for the whole Bronze Layer: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + 'seconds'
+		SET @end_time = GETDATE();
+		PRINT '======================================================='
+		PRINT 'Loading Bronze Layer Completed'
+		PRINT '>> - Total Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + 'seconds'
+		PRINT '======================================================='
+		
 
 	END TRY
 	BEGIN CATCH
